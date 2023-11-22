@@ -5,29 +5,21 @@ const fs = require('fs');
 //const dataPath = require('../data/data.json');
 const dataPath = require('../data/data.json')
 
- // Get all users
-router.get("/users", (req, res) => {
-    fs.readFile('../data/data.json', "utf8", (err, data) => {
-        if (err) {
-            throw err;
-        }
+const { users } = require('../controllers/usersController')
 
-        res.send(JSON.parse(data));
-    });
-});
+ // Get all users
+router.get("/users", users.getAllUsers);
+
+// Get all users w
+router.get("users/:id", users.getAUser);
 
 // Create user
-router.post("/create", (req, res) => {
-    let person = fs.readFileSync('../data/data.json',"utf-8");
-    let user = JSON.parse(person);
-    user.person.push(user);
-    const write = fs.writeFileSync('../data/data.json', JSON.stringify(user),"utf-8");
-    console.log(write);
-});
+router.post("/create",users.postAUser);
+
+// Update user
+router.put("/:id", users.updateUser);
 
 // Delete user 
-router.delete("/delete", (req, res) => {
-    
-})
+router.delete("/:id" )
 
 module.exports = router
