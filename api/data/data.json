@@ -1,0 +1,14 @@
+{
+    "person": [
+        {
+            "id": 1,
+            "name": "Thabiso",
+            "surname": "Hlatshwayo"
+        },
+        {
+            "id": 2,
+            "name": "Bevan",
+            "surname": "van Niekerk"
+        }
+    ]
+}
