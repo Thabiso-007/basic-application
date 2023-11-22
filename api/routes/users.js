@@ -7,7 +7,7 @@ const dataPath = require('../data/data.json')
 
  // Get all users
 router.get("/users", (req, res) => {
-    fs.readFile(typeof dataPath, "utf8", (err, data) => {
+    fs.readFile('../data/data.json', "utf8", (err, data) => {
         if (err) {
             throw err;
         }
@@ -18,10 +18,10 @@ router.get("/users", (req, res) => {
 
 // Create user
 router.post("/create", (req, res) => {
-    let person = fs.readFileSync(dataPath,"utf-8");
+    let person = fs.readFileSync('../data/data.json',"utf-8");
     let user = JSON.parse(person);
     user.person.push(user);
-    const write = fs.writeFileSync(dataPath, JSON.stringify(user),"utf-8");
+    const write = fs.writeFileSync('../data/data.json', JSON.stringify(user),"utf-8");
     console.log(write);
 });
 
