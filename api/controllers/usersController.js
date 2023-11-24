@@ -1,30 +1,38 @@
-const fs = require('fs');
+const db = require("../models");
+const Tutorial = db.tutorials;
+const Op = db.Sequelize.Op;
 
-//const dataPath = require('../data/data.json')
+// Create and Save a new Tutorial
+exports.create = (req, res) => {
+  
+};
 
-const users = {
-    getAllUsers: async (req, res) => {
-        await fs.readFile('../data/data.json', "utf8", (err, data) => {
-            if (err) {
-                throw err;
-            }
-    
-            res.send(JSON.parse(data));
-        });
-    },
+// Retrieve all Tutorials from the database.
+exports.findAll = (req, res) => {
+  
+};
 
-    getAUser: async (req, res) => {},    
+// Find a single Tutorial with an id
+exports.findOne = (req, res) => {
+  
+};
 
-    postAUser: async (req, res) => {
-        let person = fs.readFileSync('../data/data.json',"utf-8");
-        let user = JSON.parse(person);
-        user.person.push(user);
-        await fs.writeFileSync('../data/data.json', JSON.stringify(user),"utf-8");
-    },
+// Update a Tutorial by the id in the request
+exports.update = (req, res) => {
+  
+};
 
-    updateUser: async (req, res) => {},
+// Delete a Tutorial with the specified id in the request
+exports.delete = (req, res) => {
+  
+};
 
-    deleteAUser: async (req, res) => {}
-}
+// Delete all Tutorials from the database.
+exports.deleteAll = (req, res) => {
+  
+};
 
-module.exports = {  users}
+// Find all published Tutorials
+exports.findAllPublished = (req, res) => {
+  
+};

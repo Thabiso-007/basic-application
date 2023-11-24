@@ -1,28 +1,30 @@
-// load up the express framework and body-parser helper
 const express = require("express");
 const bodyParser = require("body-parser");
-const morgan = require("morgan");
 const cors = require("cors");
 
-const userRoutes = require("./routes/users");
+const db = require("./app/model");
+// db.sequelize.sync();
 
 const app = express();
 
-const port = 3080;
+var corsOptions = {
+  origin: "http://localhost:4200"
+};
 
-app.get("/", (req, res) => {
-  res.send("welcome to the development api-server");
-});
+app.use(cors(corsOptions));
 
+// parse requests of content-type - application/json
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(morgan("tiny"));
-app.use(cors());
 
-app.use("/api", userRoutes);
+// simple route
+app.get("/", (req, res) => {
+  res.json({ message: "Server is online" });
+});
 
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
+// set port, listen for requests
+const PORT = 8080;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });
